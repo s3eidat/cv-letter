@@ -1,0 +1,18 @@
+{
+  "name": "Cover Letter — S3eidat Tools",
+  "short_name": "Cover Letter",
+  "description": "Fill-in-the-blanks cover letter builder",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d0f12",
+  "theme_color": "#0d0f12",
+  "icons": [
+    {
+      "src": "kit/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
