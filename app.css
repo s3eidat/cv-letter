@@ -1,0 +1,39 @@
+.cl-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 14px; align-items: start; }
+.cl-out { display: grid; gap: 14px; position: sticky; top: 74px; }
+.cl-out .card .faint { margin: 10px 0 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* The letter is paper: white with dark ink in both themes. */
+.letter {
+  background: #fff; color: #1f2329; border-radius: 6px; padding: 38px 40px 44px;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .55), 0 0 0 1px rgba(0, 0, 0, .06);
+  font-size: 14px; line-height: 1.6; max-height: calc(100vh - 260px); overflow: auto;
+}
+.l-head { border-bottom: 2px solid #0e9f9a; padding-bottom: 12px; margin-bottom: 18px; }
+.l-name { font-size: 22px; font-weight: 750; letter-spacing: -.01em; color: #111; }
+.l-name.ph { color: #b3b9c2; }
+.l-contact { color: #5a626e; font-size: 13px; }
+.l-date { color: #5a626e; margin-bottom: 16px; }
+.l-body {
+  display: block; width: 100%; min-height: 360px; border: 0; padding: 4px 6px; margin: 0 -6px; resize: none; overflow: hidden;
+  background: transparent; color: inherit; font: inherit; line-height: inherit; white-space: pre-wrap; border-radius: 6px;
+}
+.l-body:focus { outline: 2px solid rgba(14, 159, 154, .35); outline-offset: 2px; }
+.l-print { display: none; white-space: pre-wrap; }
+@media (max-width: 900px) {
+  .cl-layout { grid-template-columns: minmax(0, 1fr); }
+  .cl-out { position: static; }
+  .letter { max-height: none; padding: 26px 22px; }
+}
+
+@media print {
+  @page { size: A4; margin: 22mm 22mm 20mm; }
+  html, body { background: #fff !important; }
+  .s3-main { padding: 0; max-width: none; }
+  .s3-hero, .cl-out > .card { display: none !important; }
+  .cl-layout, .cl-out { display: block; position: static; }
+  .letter { box-shadow: none; border-radius: 0; padding: 0; max-height: none; overflow: visible; font-size: 11pt; }
+  .l-body { display: none; }
+  .l-print { display: block; }
+  .l-name.ph { visibility: hidden; }
+}

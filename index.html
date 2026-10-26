@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Cover Letter Builder — Free Fill-in-the-Blanks Cover Letter, No AI | S3eidat Tools</title>
+<meta name="description" content="Answer a few questions and get a professional cover letter built from hand-written templates. Four tones, fully editable, copy or print to PDF. Free, private, no AI, no sign-up.">
+<meta property="og:title" content="Cover Letter Builder — free, private, no AI">
+<meta property="og:description" content="Fill in the blanks, pick a tone, get a polished cover letter. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="cv-letter">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Cover Letter Builder</h1>
+    <p>Answer a few questions and get a polished cover letter assembled from hand-written templates. No AI: your words, arranged well. Edit anything, then copy it or print to PDF.</p>
+    <div class="s3-badges"><span class="chip accent"><svg class="i"><use href="#i-lock"/></svg>Saved in this browser only</span><span class="chip">4 tones × 2 versions</span><span class="chip">No AI, no upload</span></div>
+  </section>
+
+  <div class="cl-layout">
+    <div class="stack no-print" id="form">
+      <section class="card">
+        <h2>The job</h2>
+        <div class="grid-2">
+          <label class="field">Role you're applying for<input class="input" data-k="role" dir="auto" maxlength="80" placeholder="Marketing Coordinator"></label>
+          <label class="field">Company<input class="input" data-k="company" dir="auto" maxlength="80" placeholder="Acme Ltd"></label>
+          <label class="field">Hiring manager (optional)<input class="input" data-k="manager" dir="auto" maxlength="80" placeholder="Ms. Rana Khalil"></label>
+          <label class="field">Where you saw it (optional)<input class="input" data-k="source" dir="auto" maxlength="60" placeholder="LinkedIn"></label>
+        </div>
+        <label class="field mt">Why this company? (one sentence)<input class="input" data-k="why" dir="auto" maxlength="220" placeholder="Your work making banking accessible to small businesses is exactly what I want to be part of."></label>
+      </section>
+
+      <section class="card">
+        <h2>About you</h2>
+        <div class="grid-2">
+          <label class="field">Your name<input class="input" data-k="name" dir="auto" maxlength="80"></label>
+          <label class="field">Current / last job title<input class="input" data-k="current" dir="auto" maxlength="80" placeholder="Social Media Specialist"></label>
+          <label class="field">Years of experience<input class="input" data-k="years" type="number" min="0" max="60" step="1" inputmode="numeric"></label>
+          <label class="field">Available to start<input class="input" data-k="start" dir="auto" maxlength="40" placeholder="immediately / in two weeks"></label>
+          <label class="field">Email<input class="input" data-k="email" dir="auto" maxlength="100"></label>
+          <label class="field">Phone<input class="input" data-k="phone" dir="auto" maxlength="40"></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Strengths &amp; achievements</h2>
+        <div class="grid-3">
+          <label class="field">Strength 1<input class="input" data-k="s1" dir="auto" maxlength="60" placeholder="content strategy"></label>
+          <label class="field">Strength 2<input class="input" data-k="s2" dir="auto" maxlength="60" placeholder="data analysis"></label>
+          <label class="field">Strength 3<input class="input" data-k="s3" dir="auto" maxlength="60" placeholder="clear writing"></label>
+        </div>
+        <label class="field mt">Achievement 1 <span class="faint">start with a verb, add a number</span><input class="input" data-k="a1" dir="auto" maxlength="200" placeholder="Grew our Instagram audience from 4k to 25k in 12 months"></label>
+        <label class="field mt">Achievement 2<input class="input" data-k="a2" dir="auto" maxlength="200" placeholder="Cut campaign reporting time by 60% with a shared dashboard"></label>
+      </section>
+    </div>
+
+    <section class="cl-out">
+      <div class="card no-print">
+        <div class="row">
+          <div class="seg" id="tone" role="group" aria-label="Tone">
+            <button aria-pressed="true" data-v="formal">Formal</button>
+            <button aria-pressed="false" data-v="warm">Warm</button>
+            <button aria-pressed="false" data-v="confident">Confident</button>
+            <button aria-pressed="false" data-v="concise">Concise</button>
+          </div>
+          <div class="seg" id="ver" role="group" aria-label="Version">
+            <button aria-pressed="true" data-v="0">v1</button>
+            <button aria-pressed="false" data-v="1">v2</button>
+          </div>
+        </div>
+        <div class="row mt">
+          <button class="btn primary" id="print"><svg class="i"><use href="#i-file"/></svg>Print / PDF</button>
+          <button class="btn" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy</button>
+          <button class="btn ghost" id="txt"><svg class="i"><use href="#i-download"/></svg>.txt</button>
+          <span class="grow"></span>
+          <span class="chip warn" id="edited" hidden>Edited by you</span>
+          <button class="btn ghost small" id="rebuild" hidden><svg class="i"><use href="#i-refresh"/></svg>Rebuild from form</button>
+        </div>
+        <p class="faint" id="todo"></p>
+      </div>
+
+      <article class="letter" id="letter">
+        <header class="l-head"><div class="l-name" id="lName"></div><div class="l-contact" id="lContact"></div></header>
+        <div class="l-date" id="lDate"></div>
+        <label class="sr" for="body">Letter text</label>
+        <textarea id="body" class="l-body" spellcheck="true" dir="auto"></textarea>
+        <div class="l-print" id="bodyPrint"></div>
+      </article>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
